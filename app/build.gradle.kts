@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    //Apikey
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -38,9 +41,10 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.2"
     }
     packaging {
         resources {
@@ -72,4 +76,10 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //Ktor
+    implementation("io.ktor:ktor-client-core:2.3.5")
+    implementation("io.ktor:ktor-client-cio:2.3.5")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.5")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.5")
 }
