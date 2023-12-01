@@ -22,13 +22,15 @@ data class ForecastList(
     @SerialName("main") val main: Main,
     @SerialName("weather") val weather: List<Weather>,
     @SerialName("wind") val wind: Wind,
-    val pop: Float, //降水確率 1~0
+    val pop: Double, //降水確率 1~0
+    @SerialName("snow") val snow: Snow? = null,
+    @SerialName("rain") val rain: Rain? = null,
 )
 
 @Serializable
 data class Main(
-    val temp: Float, //温度
-    val feels_like: Float, //体感温度
+    val temp: Double, //温度
+    val feels_like: Double, //体感温度
     val grnd_level: Int, //地上の大気圧 hPa
     val humidity: Int, //湿度 %
 )
@@ -46,10 +48,18 @@ data class Clouds(
 
 @Serializable
 data class Wind(
-    val speed: Float, //風速 m/s
+    val speed: Double, //風速 m/s
     val deg: Int, //風向 度
-    val gust: Float, //瞬間風速 m/s
+    val gust: Double, //瞬間風速 m/s
 )
 
+@Serializable
+data class Snow(
+    @SerialName("3h") val snow: Double?
+)
 
+@Serializable
+data class Rain(
+    @SerialName("3h") val rain: Double?
+)
 

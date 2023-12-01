@@ -32,8 +32,8 @@ object WeatherApiClient {
         }
     }
 
-    public suspend fun get(id: String) =
+    public suspend fun get(q: String) =
         client.get{
-            url("$WEATHER_INFO_URL&id=$id&appid=$API_ID")
+            url("$WEATHER_INFO_URL&q=$q&appid=$API_ID")
         }
 }
